@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .hidden {
+      display: none;
+    }
+    
+    /* Global CSS Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #2d3748;
+      background: #f7fafc;
+    }
+    
+    /* Ensure all buttons have consistent styling */
+    button {
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      border: none;
+      outline: none;
+    }
+    
+    /* Ensure all inputs have consistent styling */
+    input, select, textarea {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<link rel="stylesheet" href="body.css" />
+<link rel="stylesheet" href="login_form.css" />
+<link rel="stylesheet" href="lobby.css" />
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="leaderboard.css" />
+<link rel="stylesheet" href="gamerooms.css" />
+<link rel="stylesheet" href="gridandchat.css" />
+
+
+<body>
+  <div id="section0">
+    <div id="loginSection" class="login-background">
+      <div class="login-container">
+        <div id="currentUser" style="color: #fff; text-shadow: 0 1px 4px #000;">
+          Welcome, <span class="currentUsername"></span>
+        </div>
+
+
+        <form id="loginForm">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required="" placeholder="Enter Username...">
+          <button type="submit" id="UsernameInput">Login</button>
+        </form>
+        <!-- <div class="button-group">
+          <button id="btnSection0">Logout</button>
+          <button id="btnSection1">Section 1</button>
+          <button id="btnSection2">Section 2</button>
+          <button id="btnSection3">Section 3</button>
+        </div> -->
+      </div>
+    </div>
+
+  </div>
+
+  <div id="section1" class="hidden">
+    <div id="currentUser" style="color: #fff; text-shadow: 0 1px 4px #000;">
+      Your Username : <span class="currentUsername"></span>
+    </div>
+
+    <button id="resetGame">Reset Game</button>
+    <p>Please give about 5 seconds for the game to reset... </p>
+
+    <h3>Player's Online List :</h3>
+    <ul id="playerList"></ul>
+    <!-- Player list container -->
+
+    <!-- 
+    Join Game Table 
+    It will list the game rooms on the column1, number of players joined Eg : (1/2) on column2 and Join button on column3
+     -->
+
+    <table id="gameTable">
+      <thead>
+        <tr>
+          <th>Game Room</th>
+          <th>Players</th>
+          <th>Join</th>
+          <th>Grid Generation Time (ms)</th>
+        </tr>
+      </thead>
+      <tbody id="gameTableBody"></tbody>
+    </table>
+
+    <button id="btnSection0_sec1" class="over_and_out">Logout</button>
+    <!-- <button id="btnSection1_sec1">Section 1</button>
+    <button id="btnSection2_sec1">Section 2</button>
+    <button id="btnSection3_sec1">Section 3</button> 
+
+    <button id="Section1_gameroom1_enter_bttn">Enter Gameroom 1</button>
+    <button id="Section1_gameroom2_enter_bttn">Enter Gameroom 2</button>
+    <button id="Section1_gameroom3_enter_bttn">Enter Gameroom 3</button>
+    <button id="Section1_gameroom4_enter_bttn">Enter Gameroom 4</button>
+    <button id="Section1_gameroom5_enter_bttn">Enter Gameroom 4</button> -->
+  </div>
+
+  <div id="the_main" style="background-color: white;"> <!-- making the whole game room one div -->
+    <!--GAME ROOM 1-->
+    <div id="gameroom1" class="hidden">
+      <h1 class="for_title">Game Room 1</h1>
+      
+      <!-- Top Info Section -->
+      <div class="top-info-section">
+        <!-- Player Info Section -->
+        <div class="player-info" id="gameroom1_playerinfo"></div>
+
+        <!-- Color Selection Section -->
+        <div class="color-selection" style="display: flex; flex-direction: row; gap: 24px; align-items: center;">
+          <div class="color-group">
+            <label for="player1-color-gameroom1">Player 1 Color</label>
+            <select id="player1-color-gameroom1" class="Player1">
+              <option value="#ff0000">Red</option>
+              <option value="#0000ff">Blue</option>
+              <option value="#008000">Green</option>
+              <option value="#ffff00">Yellow</option>
+              <option value="#ffa500">Orange</option>
+              <option value="#800080">Purple</option>
+            </select>
+          </div>
+          <div class="color-group">
+            <label for="player2-color-gameroom1">Player 2 Color</label>
+            <select id="player2-color-gameroom1" class="PLayer2">
+              <option value="#0000ff">Blue</option>
+              <option value="#ff0000">Red</option>
+              <option value="#008000">Green</option>
+              <option value="#ffff00">Yellow</option>
+              <option value="#ffa500">Orange</option>
+              <option value="#800080">Purple</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Game Area -->
+      <div class="game-main-area">
+        <!-- Left: Grid -->
+        <div class="grid-section">
+          <div id="gameroom1_grid" class="grid-container">
+            <!-- The game grid will go here -->
+          </div>
+        </div>
+        <!-- Right: Side Panel (Scoreboard + Chat) -->
+        <div class="side-panel">
+          <div class="scoreboard-section">
+            <table id="gameroom1_leaderboard_table">
+              <thead>
+                <tr>
+                  <th>Player</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td id="gameroom1_score_player1">Player 1</td>
+                  <td id="gameroom1_score_player1_value">0</td>
+                </tr>
+                <tr>
+                  <td id="gameroom1_score_player2">Player 2</td>
+                  <td id="gameroom1_score_player2_value">0</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="chat-container">
+            <div class="chat-header">
+              <span>CHAT BOX</span>
+            </div>
+            <div id="gameroom1_chat" class="message-area">
+              <!-- Chat messages will appear here -->
+            </div>
+            <input type="text" id="gameroom1_chat_input" class="chat-input" placeholder="Type a message..." />
+            <button id="gameroom1_send_msg" class="send-btn" onclick="sendChatMessage('gameroom1')">Send</button>
+          </div>
+          <div class="game-controls">
+            <button id="gameroom1_send" class="checkester">Check Selection</button>
+            <button id="gameroom1_exit_bttn" class="exit-game-btn">Exit Game</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Words Section -->
+      <div class="words-section">
+        <div id="gameroom1_words_container">
+          <ul id="gameroom1_words">
+            <!-- Found words will go here -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!--GAME ROOM 2-->
+    <div id="gameroom2" class="hidden">
+      <h1 class="for_title">Game Room 2</h1>
+      
+      <!-- Top Info Section -->
+      <div class="top-info-section">
+        <!-- Player Info Section -->
+        <div class="player-info" id="gameroom2_playerinfo"></div>
+
+        <!-- Color Selection Section -->
+        <div class="color-selection" style="display: flex; flex-direction: row; gap: 24px; align-items: center;">
+          <div class="color-group">
+            <label for="player1-color-gameroom2">Player 1 Color</label>
+            <select id="player1-color-gameroom2" class="Player1">
+              <option value="#ff0000">Red</option>
+              <option value="#0000ff">Blue</option>
+              <option value="#008000">Green</option>
+              <option value="#ffff00">Yellow</option>
+              <option value="#ffa500">Orange</option>
+              <option value="#800080">Purple</option>
+            </select>
+          </div>
+          <div class="color-group">
+            <label for="player2-color-gameroom2">Player 2 Color</label>
+            <select id="player2-color-gameroom2" class="PLayer2">
+              <option value="#0000ff">Blue</option>
+              <option value="#ff0000">Red</option>
+              <option value="#008000">Green</option>
+              <option value="#ffff00">Yellow</option>
+              <option value="#ffa500">Orange</option>
+              <option value="#800080">Purple</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Game Area -->
+      <div class="game-main-area">
+        <!-- Left: Grid -->
+        <div class="grid-section">
+          <div id="gameroom2_grid" class="grid-container">
+            <!-- The game grid will go here -->
+          </div>
+        </div>
+        <!-- Right: Side Panel (Scoreboard + Chat) -->
+        <div class="side-panel">
+          <div class="scoreboard-section">
+            <table id="gameroom2_leaderboard_table">
+              <thead>
+                <tr>
+                  <th>Player</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Dynamic rows will be added here -->
+              </tbody>
+            </table>
+          </div>
+          <div class="chat-container">
+            <div class="chat-header">
+              <span>CHAT BOX</span>
+            </div>
+            <div id="gameroom2_chat" class="message-area">
+              <!-- Chat messages will appear here -->
+            </div>
+            <input type="text" id="gameroom2_chat_input" class="chat-input" placeholder="Type a message..." />
+            <button id="gameroom2_send_msg" class="send-btn" onclick="sendChatMessage('gameroom2')">Send</button>
+          </div>
+          <div class="game-controls">
+            <button id="gameroom2_send" class="checkester">Check Selection</button>
+            <button id="gameroom2_exit_bttn" class="exit-game-btn">Exit Game</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Words Section -->
+      <div class="words-section">
+        <div id="gameroom2_words_container">
+          <ul id="gameroom2_words">
+            <!-- Found words will go here -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!--GAME ROOM 3-->
+    <div id="gameroom3" class="hidden">
+      <h1 class="for_title">Game Room 3</h1>
+      
+      <!-- Top Info Section -->
+      <div class="top-info-section">
+        <!-- Player Info Section -->
+        <div class="player-info" id="gameroom3_playerinfo"></div>
+
+        <!-- Color Selection Section -->
+        <div class="color-selection" style="display: flex; flex-direction: row; gap: 24px; align-items: center;">
+          <div class="color-group">
+            <label for="player1-color-gameroom3">Player 1 Color</label>
+            <select id="player1-color-gameroom3" class="Player1">
+              <option value="#ff0000">Red</option>
+              <option value="#0000ff">Blue</option>
+              <option value="#008000">Green</option>
+              <option value="#ffff00">Yellow</option>
+              <option value="#ffa500">Orange</option>
+              <option value="#800080">Purple</option>
+            </select>
+          </div>
+          <div class="color-group">
+            <label for="player2-color-gameroom3">Player 2 Color</label>
+            <select id="player2-color-gameroom3" class="PLayer2">
+              <option value="#0000ff">Blue</option>
+              <option value="#ff0000">Red</option>
+              <option value="#008000">Green</option>
+              <option value="#ffff00">Yellow</option>
+              <option value="#ffa500">Orange</option>
+              <option value="#800080">Purple</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Game Area -->
+      <div class="game-main-area">
+        <!-- Left: Grid -->
+        <div class="grid-section">
+          <div id="gameroom3_grid" class="grid-container">
+            <!-- The game grid will go here -->
+          </div>
+        </div>
+        <!-- Right: Side Panel (Scoreboard + Chat) -->
+        <div class="side-panel">
+          <div class="scoreboard-section">
+            <table id="gameroom3_leaderboard_table">
+              <thead>
+                <tr>
+                  <th>Player</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Dynamic rows will be added here -->
+              </tbody>
+            </table>
+          </div>
+          <div class="chat-container">
+            <div class="chat-header">
+              <span>CHAT BOX</span>
+            </div>
+            <div id="gameroom3_chat" class="message-area">
+              <!-- Chat messages will appear here -->
+            </div>
+            <input type="text" id="gameroom3_chat_input" class="chat-input" placeholder="Type a message..." />
+            <button id="gameroom3_send_msg" class="send-btn" onclick="sendChatMessage('gameroom3')">Send</button>
+          </div>
+          <div class="game-controls">
+            <button id="gameroom3_send" class="checkester">Check Selection</button>
+            <button id="gameroom3_exit_bttn" class="exit-game-btn">Exit Game</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Words Section -->
+      <div class="words-section">
+        <div id="gameroom3_words_container">
+          <ul id="gameroom3_words">
+            <!-- Found words will go here -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-------GAME ROOM 4--------->
+    <div id="gameroom4" class="hidden">
+      <h1 class="for_title">Game Room 4</h1>
+      
+      <!-- Top Info Section -->
+      <div class="top-info-section">
+        <!-- Player Info Section -->
+        <div class="player-info" id="gameroom4_playerinfo"></div>
+
+        <!-- Color Selection Section -->
+        <div class="color-selection" style="display: flex; flex-direction: row; gap: 24px; align-items: center;">
+          <div class="color-group">
+            <label for="player1-color-gameroom4">Player 1 Color</label>
+            <select id="player1-color-gameroom4" class="Player1">
+              <option value="#ff0000">Red</option>
+              <option value="#0000ff">Blue</option>
+              <option value="#008000">Green</option>
+              <option value="#ffff00">Yellow</option>
+              <option value="#ffa500">Orange</option>
+              <option value="#800080">Purple</option>
+            </select>
+          </div>
+          <div class="color-group">
+            <label for="player2-color-gameroom4">Player 2 Color</label>
+            <select id="player2-color-gameroom4" class="PLayer2">
+              <option value="#0000ff">Blue</option>
+              <option value="#ff0000">Red</option>
+              <option value="#008000">Green</option>
+              <option value="#ffff00">Yellow</option>
+              <option value="#ffa500">Orange</option>
+              <option value="#800080">Purple</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Game Area -->
+      <div class="game-main-area">
+        <!-- Left: Grid -->
+        <div class="grid-section">
+          <div id="gameroom4_grid" class="grid-container">
+            <!-- The game grid will go here -->
+          </div>
+        </div>
+        <!-- Right: Side Panel (Scoreboard + Chat) -->
+        <div class="side-panel">
+          <div class="scoreboard-section">
+            <table id="gameroom4_leaderboard_table">
+              <thead>
+                <tr>
+                  <th>Player</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Dynamic rows will be added here -->
+              </tbody>
+            </table>
+          </div>
+          <div class="chat-container">
+            <div class="chat-header">
+              <span>CHAT BOX</span>
+            </div>
+            <div id="gameroom4_chat" class="message-area">
+              <!-- Chat messages will appear here -->
+            </div>
+            <input type="text" id="gameroom4_chat_input" class="chat-input" placeholder="Type a message..." />
+            <button id="gameroom4_send_msg" class="send-btn" onclick="sendChatMessage('gameroom4')">Send</button>
+          </div>
+          <div class="game-controls">
+            <button id="gameroom4_send" class="checkester">Check Selection</button>
+            <button id="gameroom4_exit_bttn" class="exit-game-btn">Exit Game</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Words Section -->
+      <div class="words-section">
+        <div id="gameroom4_words_container">
+          <ul id="gameroom4_words">
+            <!-- Found words will go here -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!--GAME ROOM 5-->
+    <div id="gameroom5" class="hidden">
+      <h1 class="for_title">Game Room 5</h1>
+      
+      <!-- Top Info Section -->
+      <div class="top-info-section">
+        <!-- Player Info Section -->
+        <div class="player-info" id="gameroom5_playerinfo"></div>
+
+        <!-- Color Selection Section -->
+        <div class="color-selection" style="display: flex; flex-direction: row; gap: 24px; align-items: center;">
+          <div class="color-group">
+            <label for="player1-color-gameroom5">Player 1 Color</label>
+            <select id="player1-color-gameroom5" class="Player1">
+              <option value="#ff0000">Red</option>
+              <option value="#0000ff">Blue</option>
+              <option value="#008000">Green</option>
+              <option value="#ffff00">Yellow</option>
+              <option value="#ffa500">Orange</option>
+              <option value="#800080">Purple</option>
+            </select>
+          </div>
+          <div class="color-group">
+            <label for="player2-color-gameroom5">Player 2 Color</label>
+            <select id="player2-color-gameroom5" class="PLayer2">
+              <option value="#0000ff">Blue</option>
+              <option value="#ff0000">Red</option>
+              <option value="#008000">Green</option>
+              <option value="#ffff00">Yellow</option>
+              <option value="#ffa500">Orange</option>
+              <option value="#800080">Purple</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Game Area -->
+      <div class="game-main-area">
+        <!-- Left: Grid -->
+        <div class="grid-section">
+          <div id="gameroom5_grid" class="grid-container">
+            <!-- The game grid will go here -->
+          </div>
+        </div>
+        <!-- Right: Side Panel (Scoreboard + Chat) -->
+        <div class="side-panel">
+          <div class="scoreboard-section">
+            <table id="gameroom5_leaderboard_table">
+              <thead>
+                <tr>
+                  <th>Player</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Dynamic rows will be added here -->
+              </tbody>
+            </table>
+          </div>
+          <div class="chat-container">
+            <div class="chat-header">
+              <span>CHAT BOX</span>
+            </div>
+            <div id="gameroom5_chat" class="message-area">
+              <!-- Chat messages will appear here -->
+            </div>
+            <input type="text" id="gameroom5_chat_input" class="chat-input" placeholder="Type a message..." />
+            <button id="gameroom5_send_msg" class="send-btn" onclick="sendChatMessage('gameroom5')">Send</button>
+          </div>
+          <div class="game-controls">
+            <button id="gameroom5_send" class="checkester">Check Selection</button>
+            <button id="gameroom5_exit_bttn" class="exit-game-btn">Exit Game</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Words Section -->
+      <div class="words-section">
+        <div id="gameroom5_words_container">
+          <ul id="gameroom5_words">
+            <!-- Found words will go here -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="websocket.js"></script>
+  <script src="navigate.js"></script>
+</body>
+
+</html>

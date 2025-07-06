@@ -1,0 +1,116 @@
+/* --- 1. GAME ROOM MAIN LAYOUT --- */
+[id^="gameroom"] {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px 16px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #e5e7eb;
+    margin: 32px auto;
+    max-width: 1100px;
+    font-family: 'Inter', sans-serif;
+}
+
+[id^="gameroom"] h1.for_title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #111827;
+    text-align: center;
+    margin: 0 0 12px 0;
+    padding: 12px 0 8px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* --- 2. TOP INFO SECTION --- */
+[id^="gameroom"] .top-info-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+[id^="gameroom"] .player-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+[id^="gameroom"] .player-info p {
+    padding: 6px 14px;
+    background: #f9fafb;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    font-weight: 500;
+    color: #374151;
+    margin: 0;
+    font-size: 1rem;
+}
+
+[id^="gameroom"] .color-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 160px;
+}
+
+[id^="gameroom"] .color-group label {
+    font-weight: 500;
+    color: #374151;
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+}
+
+[id^="gameroom"] .color-group select {
+    padding: 6px 10px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #fff;
+    color: #111827;
+    font-size: 0.95rem;
+}
+
+/* --- 3. MAIN GAME AREA (GRID, LEADERBOARD, CHAT) --- */
+[id^="gameroom"] .game-main-area {
+    display: grid;
+    grid-template-columns: 200px 1fr 260px;
+    gap: 24px;
+    align-items: start; /* Changed from stretch */
+}
+
+/* --- 6. RESPONSIVE DESIGN --- */
+@media (max-width: 900px) {
+    [id^="gameroom"] {
+        max-width: 99vw;
+        padding: 4px;
+    }
+    [id^="gameroom"] .game-main-area {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    [id^="gameroom"] .leaderboard-section,
+    [id^="gameroom"] .chat-container,
+    [id^="gameroom"] .grid-container {
+        min-height: 180px;
+        max-height: 260px;
+    }
+}
+@media (max-width: 600px) {
+    [id^="gameroom"] h1.for_title {
+        font-size: 1.1rem;
+        padding: 6px 0;
+    }
+    [id^="gameroom"] .player-info p {
+        font-size: 0.9rem;
+        padding: 4px 6px;
+    }
+    [id^="gameroom"] .color-group label, [id^="gameroom"] .color-group select {
+        font-size: 0.9rem;
+    }
+    [id^="gameroom"] .game-main-area {
+        gap: 8px;
+    }
+}

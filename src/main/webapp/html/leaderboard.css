@@ -1,0 +1,56 @@
+/* --- REMOVED GAME ROOM LEADERBOARD STYLES: Now consolidated in gamerooms.css --- */
+/*
+#gameroom1_leaderboard_table,
+#gameroom2_leaderboard_table,
+#gameroom3_leaderboard_table,
+#gameroom4_leaderboard_table,
+#gameroom5_leaderboard_table {}
+#gameroom1_leaderboard_table th, #gameroom1_leaderboard_table td,
+#gameroom2_leaderboard_table th, #gameroom2_leaderboard_table td,
+#gameroom3_leaderboard_table th, #gameroom3_leaderboard_table td,
+#gameroom4_leaderboard_table th, #gameroom4_leaderboard_table td,
+#gameroom5_leaderboard_table th, #gameroom5_leaderboard_table td {}
+#gameroom1_leaderboard_table th,
+#gameroom2_leaderboard_table th,
+#gameroom3_leaderboard_table th,
+#gameroom4_leaderboard_table th,
+#gameroom5_leaderboard_table th {}
+#gameroom1_leaderboard_table tr:nth-child(even), 
+#gameroom2_leaderboard_table tr:nth-child(even),
+#gameroom3_leaderboard_table tr:nth-child(even),
+#gameroom4_leaderboard_table tr:nth-child(even),
+#gameroom5_leaderboard_table tr:nth-child(even) {}
+*/
+
+/* Keep only non-game-room styles below (if any) */
+
+[id^="gameroom"] .leaderboard-section {
+  align-self: start;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+[id^="gameroom"] [id$="_leaderboard_table"] {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.1rem;
+}
+
+[id^="gameroom"] [id$="_leaderboard_table"] th,
+[id^="gameroom"] [id$="_leaderboard_table"] td {
+  text-align: left;
+  padding: 10px 6px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+[id^="gameroom"] [id$="_leaderboard_table"] th {
+  font-weight: 700;
+  background: none;
+  color: #222;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+[id^="gameroom"] [id$="_leaderboard_table"] tr:last-child td {
+  border-bottom: none;
+}

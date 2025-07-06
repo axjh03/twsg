@@ -1,0 +1,13 @@
+[id^="gameroom"] .words-section {
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+[id^="gameroom"] [id$="_words"] {
+    gap: 12px;
+    font-size: 1.1rem;
+}
+
+[id^="gameroom"] [id$="_words"] li {
+    padding: 10px 14px;
+} 

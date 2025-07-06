@@ -1,0 +1,68 @@
+[id^="gameroom"] .chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+[id^="gameroom"] .chat-header {
+    display: none;
+}
+
+[id^="gameroom"] .message-area {
+    flex: 1;
+    overflow-y: auto;
+    font-family: monospace, 'Fira Mono', 'Consolas', monospace;
+    font-size: 15px;
+    color: #222;
+    padding: 8px 0 0 0;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+[id^="gameroom"] .message-area div {
+    background: none;
+    border: none;
+    color: #222;
+    padding: 0 0 2px 0;
+    font-size: 15px;
+    font-family: inherit;
+    line-height: 1.5;
+    word-break: break-word;
+    box-shadow: none;
+    margin: 0;
+}
+
+[id^="gameroom"] .chat-input-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 0 8px 0;
+    background: none;
+    border: none;
+}
+
+[id^="gameroom"] .chat-input {
+    flex: 1;
+    border: 1px solid #e5e7eb;
+    border-radius: 3px;
+    background: #fff;
+    padding: 8px 10px;
+    font-size: 15px;
+    font-family: monospace, 'Fira Mono', 'Consolas', monospace;
+    color: #222;
+    margin: 0;
+    outline: none;
+}
+
+[id^="gameroom"] .chat-input::placeholder {
+    color: #bbb;
+}
+
+[id^="gameroom"] .send-btn {
+    display: none;
+} 

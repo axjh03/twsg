@@ -1,0 +1,247 @@
+/* --- REMOVED GAME ROOM STYLES: Now consolidated in gamerooms.css --- */
+/*
+.grid-container {}
+.chat-container {}
+.game-grid {}
+[id^="gameroom"][id$="_leaderboard_table"] {}
+... (all related styles)
+*/
+
+/* Keep only non-game-room styles below (if any) */
+
+/* Chat Container Styling - Clean Black & White */
+.chat-container {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+}
+
+.chat-header {
+  background: #111827;
+  color: #ffffff;
+  padding: 16px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.message-area {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  background: #f9fafb;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.message-area div {
+  padding: 12px 16px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  color: #111827;
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.chat-input {
+  width: calc(100% - 32px);
+  padding: 12px 16px;
+  margin: 16px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 2px solid #e5e7eb;
+  background: #ffffff;
+  color: #111827;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.chat-input:focus {
+  outline: none;
+  border-color: #111827;
+  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.1);
+}
+
+.chat-input::placeholder {
+  color: #9ca3af;
+}
+
+/* Send Button Styling */
+.send-btn,
+.send-selection-btn {
+  width: calc(100% - 32px);
+  max-width: 200px;
+  padding: 12px 24px;
+  margin: 0 16px 16px 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+  background: #111827;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(17, 24, 39, 0.2);
+  font-family: 'Inter', sans-serif;
+}
+
+.send-btn:hover,
+.send-selection-btn:hover {
+  background: #374151;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(17, 24, 39, 0.3);
+}
+
+/* Game grid styling - Clean Design with Colorful Selections */
+.game-grid {
+  border-collapse: separate;
+  border-spacing: 2px;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  table-layout: fixed;
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.grid-cell {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+}
+
+.game-grid td {
+  border: none;
+  padding: 12px;
+  text-align: center;
+  font-size: 18px;
+  color: #111827;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-grid td::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(17, 24, 39, 0.05);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* Hover effect for grid cells */
+.game-grid td:hover {
+  background: #f3f4f6;
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.game-grid td:hover::before {
+  opacity: 1;
+}
+
+/* Selected cell styling - This is where colors come in */
+.game-grid td.selected {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Styles for grid container are now handled by gamerooms.css to avoid conflicts. */
+
+/* Leaderboard table styling */
+[id^="gameroom"][id$="_leaderboard_table"] {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  margin-bottom: 24px;
+  background: #ffffff;
+}
+
+[id^="gameroom"][id$="_leaderboard_table"] th {
+  padding: 16px 12px;
+  background: #111827;
+  color: #ffffff;
+  font-weight: 600;
+  text-align: left;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 14px;
+}
+
+[id^="gameroom"][id$="_leaderboard_table"] td {
+  padding: 16px 12px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #111827;
+  font-weight: 500;
+}
+
+[id^="gameroom"][id$="_leaderboard_table"] tr:last-child td {
+  border-bottom: none;
+}
+
+[id^="gameroom"][id$="_leaderboard_table"] tr:hover td {
+  background: #f9fafb;
+}
+
+/* Hide elements initially hidden and show them later via JavaScript */
+.hidden {
+  display: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .chat-container {
+    width: 100%;
+    max-height: 400px;
+  }
+  
+  .message-area {
+    height: 250px;
+  }
+  
+  .game-grid {
+    max-width: 100%;
+    padding: 12px;
+  }
+  
+  .game-grid td {
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  .grid-container {
+    padding: 16px;
+    max-width: 100%;
+  }
+}
+  

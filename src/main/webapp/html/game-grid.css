@@ -1,0 +1,36 @@
+[id^="gameroom"] .grid-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+[id^="gameroom"] .game-grid {
+    border-collapse: separate;
+    border-spacing: 6px;
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+    table-layout: fixed;
+}
+
+[id^="gameroom"] .game-grid td {
+    background: #f3f4f6;
+    border-radius: 6px;
+    font-size: 22px;
+    color: #222;
+    text-align: center;
+    padding: 18px;
+    min-width: 36px;
+    min-height: 36px;
+    font-weight: 600;
+    border: none;
+}
+
+[id^="gameroom"] .game-grid td.selected {
+    background: #ffe066;
+    color: #222;
+} 
