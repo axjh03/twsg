@@ -1,12 +1,53 @@
 # WordSearch Game
 
-A multiplayer word search game built with Java backend and HTML/CSS/JavaScript frontend.
+Multiplayer word search game with Java backend and HTML/CSS/JavaScript frontend.
 
-## What it is
+## Quick Start
 
-- Real-time multiplayer word search game
-- 5 game rooms for concurrent games
-- Live chat between players
+### 1. Install Java (if not installed)
+```bash
+# Check if Java is installed
+java -version
+
+# If not installed, install Java 11
+brew install openjdk@11
+```
+
+### 2. Set JAVA_HOME
+```bash
+# Set Java home path
+export JAVA_HOME=$(/usr/libexec/java_home)
+```
+
+### 3. Run the game
+```bash
+# Build and run
+./run.sh
+```
+
+## Alternative: Manual Maven commands
+```bash
+export JAVA_HOME=$(/usr/libexec/java_home)
+mvn clean
+mvn install
+mvn package
+mvn compile
+mvn exec:java
+```
+
+## Play
+
+1. Open http://localhost:9018 in browser
+2. Enter username and login
+3. Join a game room
+4. Find words in the grid
+5. Chat with opponent
+
+## What it does
+
+- 5 concurrent game rooms
+- Real-time multiplayer
+- Live chat
 - Score tracking
 - Color-coded word selection
 
