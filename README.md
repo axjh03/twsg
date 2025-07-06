@@ -1,6 +1,74 @@
-# Multiplayer Word Search Game
+# WordSearch Game
 
-A full-stack, real-time multiplayer word search game. Users can join a lobby, enter game rooms, play against each other, chat in real time, and compete for the highest score.
+A multiplayer word search game built with Java backend and HTML/CSS/JavaScript frontend.
+
+## What it is
+
+- Real-time multiplayer word search game
+- 5 game rooms for concurrent games
+- Live chat between players
+- Score tracking
+- Color-coded word selection
+
+## How to run locally
+
+### Prerequisites
+- Java 8 or higher
+- Maven
+- Web browser
+
+### Setup Steps
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/axjh03/twsg.git
+   cd twsg
+   ```
+
+2. **Build the project**
+   ```bash
+   mvn clean install
+   ```
+
+3. **Run the server**
+   ```bash
+   sh run.sh
+   ```
+
+4. **Open in browser**
+   - Go to: http://localhost:9018
+   - The game will load automatically
+
+### How to play
+
+1. **Login**: Enter a username
+2. **Join a game**: Click "Join" on any available game room
+3. **Wait for opponent**: Game starts when 2 players join
+4. **Find words**: Click letters to select words in the grid
+5. **Chat**: Use the chat box to communicate
+6. **Score**: Find more words than your opponent to win
+
+### Game Controls
+
+- **Select letters**: Click on grid cells to highlight words
+- **Check selection**: Click "Check Selection" to submit a word
+- **Chat**: Type in chat box and press Enter
+- **Exit game**: Click "Exit Game" to return to lobby
+- **Reset game**: Click "Reset Game" to start fresh
+
+### Technical Details
+
+- **Backend**: Java with WebSocket server (port 9118)
+- **Frontend**: Static HTML/CSS/JS served on port 9018
+- **Dependencies**: Maven manages all Java libraries
+- **Build**: Creates executable JAR with all dependencies
+
+### Troubleshooting
+
+- **Port already in use**: Make sure ports 9018 and 9118 are free
+- **Java not found**: Install Java 8+ and add to PATH
+- **Maven not found**: Install Maven and add to PATH
+- **Build fails**: Check Java version compatibility
 
 ---
 
